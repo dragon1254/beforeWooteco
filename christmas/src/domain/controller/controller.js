@@ -1,4 +1,6 @@
 import InputView from "../views/InputView";
+import { Console, MissionUtils } from "@woowacourse/mission-utils";
+import OutputView from "../views/OutputView";
 
 class constroller{
 #date
@@ -6,8 +8,9 @@ class constroller{
 
     }
 
-    start(){
-
+    async start(){
+        OutputView.printIntro;
+        await this.getDate();
     }
 
     async getDate(){
@@ -17,7 +20,6 @@ class constroller{
             console.log(err);
             return await this.getDate();
         }
-        
     }
 }
 
