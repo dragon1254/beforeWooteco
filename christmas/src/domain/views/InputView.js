@@ -1,7 +1,13 @@
-export default InputView = {
+import MESSAGE from "../model/message/message";
+import validateDate from "../model/validate/validateDate";
+
+const InputView = {
     async readDate() {
-        const input = await Console.readLineAsync("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-        // ...
+        const inputDate = await Console.readLineAsync(MESSAGE.date);
+        const numberDate = Number(inputDate);
+        const checkDates = new validateDate();
+        checkDates.checkDate(numberDate);
+        return numberDate;
     }
-    // ...
 }
+export default InputView
