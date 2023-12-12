@@ -1,6 +1,6 @@
 import { Console } from "@woowacourse/mission-utils";
 import ERROR from "../message/error"
-import constNumber from "../message/number"
+import constNumber from "../constant/number"
 
 class validateDate{
     checkDate(numberDate){
@@ -8,10 +8,10 @@ class validateDate{
             throw new Error(Console.print(ERROR.dateNumber));
         }
         if(numberDate < constNumber.firstDate){
-            throw new Error(ERROR.dateNumber);
+            throw new Error(Console.print(ERROR.dateNumber));
         }
         if(numberDate > constNumber.lastDate){
-            throw new Error(ERROR.dateNumber);
+            throw new Error(Console.print(ERROR.dateNumber));
         }
     }
 }

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function check(){
+            let a = '해산물파스타-2,레드와인-1'
+            let b = a.split(',');
+            console.log(b)
+
+            let d = [];
+            let e = [];
+            b.forEach(element => {
+                let c = element.split('-')                
+                d.push(c[0])
+                e.push(Number(c[1]))
+            });
+            console.log(d);
+            console.log(e);
+        }
+    </script>
+</body>
+</html>
