@@ -54,3 +54,7 @@
 - MissionUtils.Console이 제대로 연결 되어 있는지 확인(특히 처음 주어진 input output 쪽에)
 
 - [ERROR] 출력 포함하여 출력 사항 test에서 출력사항이 Console.print인지 toThrow에러인지 확인하고 맞춰 코드 짜기
+
+- 변수는 꼭 선언하자. let이든 const이든
+
+- 시간 좀 걸려도 리드미로 전략 꼭 세우기(1시간 이내로)

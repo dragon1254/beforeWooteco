@@ -12,7 +12,7 @@ class validateMenu{
         });
     }
     checkCountList(orderedMenuCountArray){
-        countSum = 0
+        let countSum = 0
         orderedMenuCountArray.forEach(element => {
             if(isNaN(element)){
                 throw new Error(MissionUtils.Console.print(ERROR.orderedMenu));
@@ -28,11 +28,13 @@ class validateMenu{
                 throw new Error(MissionUtils.Console.print(ERROR.overTwenty));
             }
         });
-        
     }
-    // checkOtherCase(orderedMenuCountArray){
-
-    // }
+    checkOtherCase(makeOrderedList){
+        const onlyMenu = Object.values(makeOrderedList).slice(0,9)
+        if(onlyMenu.every(num => num === 0)){
+            throw new Error(MissionUtils.Console.print(ERROR.onlyDrink));
+        }
+    }
 }
 
 export default validateMenu;

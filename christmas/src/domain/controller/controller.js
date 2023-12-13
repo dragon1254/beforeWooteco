@@ -3,10 +3,14 @@ import { Console, MissionUtils } from "@woowacourse/mission-utils";
 import OutputView from "../views/OutputView";
 import getList from "../model/util/getList";
 import validateMenu from "../model/validate/validateMenu";
+import calculateDiscount from "../model/util/discount";
+import constNumber from "../model/constant/number";
+import totalMenuList from "../model/constant/constant";
 
 class constroller{
 #date
 #orderedMenu
+#discount
     constructor(){
 
     }
@@ -19,7 +23,8 @@ class constroller{
 
     async getDate(){
         try{
-            this.#date = await InputView.readDate();
+            const takeDate = await InputView.readDate();
+            this.#date = takeDate;
         }catch(err){
             console.log(err);
             return await this.getDate();
@@ -36,6 +41,30 @@ class constroller{
             return await this.getMenu();
         }
         console.log(this.#orderedMenu)
+    }
+
+    getTotalPrice(){
+        const menuCountArray = Object.values(this.#orderedMenu)
+        const totalPrice = 0
+        totalMenuList.price.forEach((element,index) => {
+            totalPrice = totalPrice + element*menuCountArray[index];
+        });
+        if(totalPrice >= 10000){
+            this.getDiscount()
+        }
+        if(totalPrice < 10000){
+            this.#discount = [0,0,0,0]
+        }
+    }
+
+    getDiscount(){
+        const discount = new calculateDiscount(this.#date,this.#orderedMenu);
+        const discountArray = discount.allDiscount();
+        this.#discount = discountArray;
+    }
+    
+    printAll(){
+        
     }
 }
 

@@ -19,10 +19,11 @@ const InputView = {
         const makeList = new getList();
         const orderedMenuArray = makeList.getMenuList(menulist);
         const orderedMenuCountArray = makeList.getMenuCountList(menulist);
+        const makeOrderedList = makeList.getOrderedList(orderedMenuArray,orderedMenuCountArray);
         const checkMenu = new validateMenu();
         checkMenu.checkMenuList(orderedMenuArray);
-        // checkMenu.checkCountList(orderedMenuCountArray);
-        const makeOrderedList = makeList.getOrderedList(orderedMenuArray,orderedMenuCountArray);
+        checkMenu.checkCountList(orderedMenuCountArray);
+        checkMenu.checkOtherCase(makeOrderedList);
         return makeOrderedList;
     }
 }

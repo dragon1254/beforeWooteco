@@ -22,6 +22,36 @@
             console.log(d);
             console.log(e);
         }
+        function toCheck(a){
+
+            let b = []
+            let c = Number(a)
+            b.push(c)
+            b.forEach(element => {
+                console.log(element);
+            });
+        }
+        function menuCheck(){
+            const menu = {
+      '양송이수프': 0,
+      '타파스': 0,
+      '시저샐러드': 0,
+      '티본스테이크': 0,
+      '바비큐립': 0,
+      '해산물파스타': 0,
+      '크리스마스파스타': 0,
+      '초코케이크': 0,
+      '아이스크림': 0,
+      '제로콜라': 0,
+      '레드와인': 0,
+      '샴페인': 0
+    }
+    const onlyMenu = Object.values(menu).slice(0,9)
+        if(onlyMenu.every(num => num ===0)){
+            console.log(111)
+        }
+        console.log(onlyMenu);
+        }
     </script>
 </body>
 </html>
