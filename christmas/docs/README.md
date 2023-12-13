@@ -65,6 +65,10 @@
 
 - html으로도 테스트 하려면 하기
 
+- 값 받아오는 것에서 async await는 빠뜨리지 않기. 한 쪽에서 await를 쓴 것이 있다면 그 상위는 모조리 async 있어야 함. 특히 app.js에 controller 연결하면서 거기 async 빠뜨리지 않게 하기
+
+- await로 값 받아올 때 바로 this.#date = await ~ 이렇게 필드로 바로 연결금지. const 로 한번 받아온 후에 필드로 연결해야 한다
+
 ### 헷갈리거나 기억해야 할 문법
 
 - 특정 문자열 기준으로 배열 만들기 : arr.split(',')
