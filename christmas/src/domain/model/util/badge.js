@@ -13,6 +13,9 @@ class badge{
         this.#discount.forEach(element => {
             totalDiscount = totalDiscount + element
         });
+        if(totalDiscount < constNumber.starBadge){
+            getBadge = '없음'
+        }
         if(totalDiscount >= constNumber.starBadge){
             getBadge = '별'
         }

@@ -45,7 +45,6 @@ class constroller{
             console.log(err);
             return await this.getMenu();
         }
-        console.log(this.#orderedMenu)
     }
 
     getTotalPrice(){
@@ -58,9 +57,6 @@ class constroller{
         if(this.#totalPrice >= 10000){
             this.getDiscount()
         }
-        if(this.#totalPrice < 10000){
-            this.#discount = [0,0,0,0]
-        }
     }
 
     getDiscount(){
@@ -70,7 +66,6 @@ class constroller{
     }
     
     printAll(){
-        console.log(this.#discount)
         OutputView.printSecondIntro(this.#date);
         OutputView.printMenu(this.#orderedMenu);
         OutputView.printTotalPrice(this.#totalPrice);
