@@ -2,8 +2,10 @@ import constNumber from "../constant/number";
 
 class badge{
 #discount
-    constructor(discount){
+#totalPrice
+    constructor(discount,totalPrice){
         this.#discount = discount;
+        this.#totalPrice = totalPrice
     }
     classify(){
         let getBadge
@@ -17,7 +19,14 @@ class badge{
         if(totalDiscount >= constNumber.treeBadge){
             getBadge = '트리'
         }
+        this.santa(totalDiscount);
+        return getBadge;
+    }
+    santa(totalDiscount){
         if(totalDiscount >= constNumber.santaBadge){
+            getBadge = '산타'
+        }
+        if(totalDiscount >= 120000){
             getBadge = '산타'
         }
     }

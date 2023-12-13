@@ -11,10 +11,10 @@ class calculateDiscount{
     }
 
     allDiscount(){
-        this.week()
         this.dDay()
+        this.week()
         this.special()
-        return discountArray
+        return this.#discountArray
     }
 
     week(){
@@ -35,7 +35,7 @@ class calculateDiscount{
         const discountMenu = menuCountArray.slice(7,9);
         let getWeekdaysDiscount = 0
         discountMenu.forEach(element => {
-            getWeekdaysDiscount = getWeekdaysDiscount + element*2023
+            getWeekdaysDiscount = getWeekdaysDiscount + element*constNumber.everyDiscount;
         });
         return getWeekdaysDiscount;
     }
@@ -45,7 +45,7 @@ class calculateDiscount{
         const discountMenu = menuCountArray.slice(3,7);
         let getWeekendDiscount = 0
         discountMenu.forEach(element => {
-            getWeekendDiscount = getWeekendDiscount + element*2023
+            getWeekendDiscount = getWeekendDiscount + element*constNumber.everyDiscount;
         });
         return getWeekendDiscount;
     }
@@ -53,7 +53,7 @@ class calculateDiscount{
     dDay(){
         if(this.#date <= constNumber.dDayDate){
             let getDdayDiscount = 0;
-            getDdayDiscount = constNumber.baseDiscount + constNumber.everyDiscount*this.#date
+            getDdayDiscount = constNumber.baseDiscount + constNumber.increaseDiscount*this.#date
             this.#discountArray.push(getDdayDiscount)
         } else if(this.#date > constNumber.dDayDate){
             this.#discountArray.push(0)

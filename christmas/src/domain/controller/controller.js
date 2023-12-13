@@ -6,19 +6,24 @@ import validateMenu from "../model/validate/validateMenu";
 import calculateDiscount from "../model/util/discount";
 import constNumber from "../model/constant/number";
 import totalMenuList from "../model/constant/constant";
+import badge from "../model/util/badge";
 
 class constroller{
 #date
 #orderedMenu
-#discount
+#discount = []
+#totalPrice
+
     constructor(){
 
     }
 
     async start(){
-        OutputView.printIntro;
+        OutputView.printIntro();
         await this.getDate();
         await this.getMenu();
+        this.getTotalPrice();
+        this.printAll();
     }
 
     async getDate(){
@@ -45,14 +50,15 @@ class constroller{
 
     getTotalPrice(){
         const menuCountArray = Object.values(this.#orderedMenu)
-        const totalPrice = 0
+        let makeTotalPrice = 0
         totalMenuList.price.forEach((element,index) => {
-            totalPrice = totalPrice + element*menuCountArray[index];
+            makeTotalPrice = makeTotalPrice + element*menuCountArray[index];
         });
-        if(totalPrice >= 10000){
+        this.#totalPrice = makeTotalPrice;
+        if(this.#totalPrice >= 10000){
             this.getDiscount()
         }
-        if(totalPrice < 10000){
+        if(this.#totalPrice < 10000){
             this.#discount = [0,0,0,0]
         }
     }
@@ -64,7 +70,17 @@ class constroller{
     }
     
     printAll(){
-        
+        console.log(this.#discount)
+        OutputView.printSecondIntro(this.#date);
+        OutputView.printMenu(this.#orderedMenu);
+        OutputView.printTotalPrice(this.#totalPrice);
+        OutputView.printGift(this.#totalPrice);
+        OutputView.printBenefit(this.#discount,this.#totalPrice);
+        OutputView.printTotalBenefit(this.#discount,this.#totalPrice);
+
+        const makeBadge = new badge(this.#discount,this.#totalPrice)
+        const myBadge = makeBadge.classify();
+        OutputView.printBadge(myBadge);
     }
 }
 
