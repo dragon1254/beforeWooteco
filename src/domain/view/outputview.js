@@ -13,11 +13,9 @@ const outputview = {
     },
 
     printWin(win){
-        MissionUtils.Console.print(`${MESSAGE.winThree + win[0]}개`);
-        MissionUtils.Console.print(MESSAGE.winFour+ win[1]+'개');
-        MissionUtils.Console.print(MESSAGE.winFive + win[2]+'개');
-        MissionUtils.Console.print(MESSAGE.winBonus + win[3]+'개');
-        MissionUtils.Console.print(MESSAGE.winSix + win[4]+'개');
+        win.forEach((element,index) => {
+           MissionUtils.Console.print(`${MESSAGE.winCount[index]+element}개`) 
+        });
     },
 
     printRate(win,lottoPrice){
