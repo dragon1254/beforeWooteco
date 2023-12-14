@@ -44,3 +44,5 @@
 - 나눗셈의 몫 구하기 : Math.floor/ 13 나누기 5의 몫은 Math.floor(13/5)
 
 - if에서 0은 false, 그 외의 숫자는 모두 true
+
+- async 메소드 해놓고 그 안에서 다시 async 메소드 연결하지 말기 - 꼬인다

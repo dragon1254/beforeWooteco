@@ -1,13 +1,15 @@
 class getWinLotto{
 #allLottos
-    constructor(allLottos){
-        this.#allLottos = allLottos
+#winningNumber
+    constructor(allLottos,winningNumber){
+        this.#allLottos = allLottos;
+        this.#winningNumber = winningNumber;
     }
 
-    checkWin(winningNumber,bonusNumber){
+    checkWin(bonusNumber){
         let winCount = [0,0,0,0,0];
         this.#allLottos.forEach(element => {
-            const everyLotto = [...element,...winningNumber]
+            const everyLotto = [...element,...this.#winningNumber]
             this.checkWinDetail(everyLotto,bonusNumber,winCount);
         })
         return winCount;

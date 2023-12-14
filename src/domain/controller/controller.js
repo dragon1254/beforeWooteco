@@ -2,20 +2,19 @@ import getWinLotto from "../model/util/getWinLotto";
 import makeLotto from "../model/util/makeLotto";
 import bonus from "../model/validate/Bonus";
 import inputView from "../view/inputview";
+import outputview from "../view/outputview";
 
 class controller{
 #lottoPrice
 #allLottos
-#win
-
-    constructor(){
-
-    }
+#winNumber
+#win =[]
 
     async start(){
         await this.getPrice();
         this.getLotto();
         await this.getWinningNumber();
+        await this.getBonusNumber();
         this.printAll();
     }
 
@@ -37,37 +36,36 @@ class controller{
     }
 
     async getWinningNumber(){
-        
         try {
-            const winningNumber = await inputView.makeWinningNumber();    
-            this.getBonusNumber(winningNumber)
+            const winningNumber = await inputView.makeWinningNumber();
+            this.#winNumber = winningNumber;
         } catch (err) {
             console.log(err)
             return await this.getWinningNumber()
         }
     }
 
-    async getBonusNumber(winningNumber){
+    async getBonusNumber(){
         try {
             const bonusNumber = await inputView.makeBonusNumber();
-            console.log(bonusNumber,winningNumber)
-            const checkBonus = new bonus();
-            checkBonus.checkNumber(winningNumber, bonusNumber);
-            this.checkWinning(winningNumber, bonusNumber);
+            const checkBonus = new bonus(this.#winNumber);
+            checkBonus.checkNumber(bonusNumber);
+            this.checkWinning(bonusNumber);
         } catch (err) {
             console.log(err)
             return await this.getBonusNumber();
         }
     }
 
-    checkWinning(winningNumber,bonusNumber){
-        const getWin = new getWinLotto(this.#allLottos)
-        const countWinArray = getWin.checkWin(winningNumber,bonusNumber);
-        this.#win = countWinArray;
+    checkWinning(bonusNumber){
+        const getWin = new getWinLotto(this.#allLottos,this.#winNumber)
+        const countWinArray = getWin.checkWin(bonusNumber);
+        this.#win = countWinArray
     }
 
     printAll(){
-
+        outputview.printWin(this.#win);
+        outputview.printRate(this.#win,this.#lottoPrice);
     }
 
 }
