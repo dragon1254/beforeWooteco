@@ -7,11 +7,11 @@ class makeLotto{
         let allLottoArray = []
         for(let i = 0; i < countLottos; i++){
             const oneLotto = MissionUtils.Random.pickUniqueNumbersInRange(1, 45, 6)
-            const oneLottoSort = oneLotto.sort((a,b) => b-a)
+            const oneLottoSort = oneLotto.sort((a,b) => a-b)
             outputview.printEveryLotto(oneLottoSort.join(', '));
             allLottoArray.push(oneLottoSort)
         }
-        
+        return allLottoArray;
     }
 }
 

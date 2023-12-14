@@ -7,7 +7,7 @@ const outputview = {
         MissionUtils.Console.print(countLottos+MESSAGE.buy)
     },
     printEveryLotto(oneLottoSort){
-        MissionUtils.Console.print(oneLottoSort)
+        MissionUtils.Console.print(`[${oneLottoSort}]`)
     }
 }
 

@@ -1,3 +1,6 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
+import ERROR from "../message/error";
+
 class Lotto {
   #numbers;
 
@@ -8,11 +11,25 @@ class Lotto {
 
   #validate(numbers) {
     if (numbers.length !== 6) {
-      throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
+      throw new Error(MissionUtils.Console.print(ERROR.six));
     }
+    const duplication = new Set(numbers)
+    if(numbers.length !== duplication.size){
+      throw new Error(MissionUtils.Console.print(ERROR.duplication));
+    }
+    this.checkRange(numbers);
   }
 
-  // TODO: 추가 기능 구현
+  checkRange(numbers){
+    numbers.forEach(element => {
+      if(element < 1){
+        throw new Error(MissionUtils.Console.print(ERROR.rangeStart))
+      }
+      if(element > 45){
+        throw new Error(MissionUtils.Console.print(ERROR.rangeFinal))
+      }
+    });
+}
 }
 
 export default Lotto;
