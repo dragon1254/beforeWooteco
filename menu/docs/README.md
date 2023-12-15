@@ -58,6 +58,19 @@ function findDuplicates(arr) {
 
 이러면 findDuplicates(arr)는 arr의 중복값을 배열로 출력
 
-- reduce활용 - 활용법 좀 더 찾기
+- reduce활용 reduce(a,b,c,d)에서 c,d는 옵션. a를 반환. b는 배열의 원소들 하나씩(foreach의 element와 같음)
+- let count = categoryNumberArray.reduce((acc=0,cur)=> {
+                if(cur === aNumber){
+                    acc++
+                }
+}) 하면 categoryNumberArray에서 하나씩 골라(cur) aNumber와 비교하여 같으면 acc에 1씩 추가하여 마지막에 acc를 return하게 됨 - 중복 개수 골라내는 방법
 
 - 리드미 작성 시간 30분내로 하기(최대로 해도 1시간 이내로)
+
+- 카테고리 숫자를 만들어서 각각에 해당하는 문자열 배치시킬때 필드하나 줄이겠다고 숫자만 리턴하는 것보다 그냥 둘다 리턴해서 둘다 저장하는게 나을 수 있다.(하나 리턴하면 메서드가 종료되니 배열로 리턴하고 각각을 필드에 저장해야 겠지만) 
+
+- 처리하고 출력하는 것을 출력가서 다 하려고 하지 말고 처리를 먼저 한 후 파라미터(든 필드든)만 보내서 출력하는 것이 더 깔끔할 것 같다.
+
+- while구문은 while(condition){} 에서 condition이 참일때 계속 반복하고 이것이 거짓이 되었을 때 반복을 종료하는 것. a가 5일때 반복을 종료하고 싶으면 condition 쪽에 a===5를 넣는 것이 아니라 a<5 로 해야 반복이 된다.
+
+-test코드 직접 짜는 것은 여전히 난관이다. 하지만 활용은 별개로 최대한 활용해야함. 한줌의 테스트코드라도 있다면 console.log 계속 써서 어디서 문제인지 최대한 빨리 알아내서 고쳐야 함.
