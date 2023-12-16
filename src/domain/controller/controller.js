@@ -1,13 +1,15 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import inputView from "../view/inputView";
-import monthWorkers from "../model/utils/monthWorkes";
+import monthWorkers from "../model/utils/monthWorkers";
 import NUMBER from "../model/constant/number";
+import workersToDate from "../model/utils/workesToDate";
 
 
 class controller{
 #startDate
 #weekdayWorkers
 #holidatWorkers
+#allWorkersToDate
 
     async run(){
         await this.getStartDate();
@@ -39,14 +41,19 @@ class controller{
 
     eachMonthWorkers(){
         const everyMonthWorkers = new monthWorkers(this.#startDate);
-        const workers = everyMonthWorkers.standardForDays()
-        this.selectWorkersToDay(workers)
+        const divideDaysAndHolidays = everyMonthWorkers.standardForDays()
+        this.selectWorkersToDay(divideDaysAndHolidays)
     }
 
-    selectWorkersToDay(){
-
+    selectWorkersToDay(divideDaysAndHolidays){
+        const makeWorkersToDate = new workersToDate(this.#weekdayWorkers,this.#holidatWorkers)
+        const workers = makeWorkersToDate.makeWorkers(divideDaysAndHolidays)
+        this.#allWorkersToDate = workers
     }
 
+    printAll(){
+        
+    }
 }
 
 export default controller;

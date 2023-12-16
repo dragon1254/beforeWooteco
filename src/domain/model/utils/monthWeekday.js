@@ -7,7 +7,7 @@ class monthWeekday{
     }
     startMon(){
         let monthObject = {};
-        for(let i = 0; i < NUMBER.monthDate.thirtyOne; i++){
+        for(let i = 1; i < NUMBER.monthDate.thirtyOne; i++){
             let temporaryNumber = i % 7
             if([1,2,3,4,5].includes(temporaryNumber)){
                 monthObject[i] = '평'
@@ -20,7 +20,7 @@ class monthWeekday{
     }
     startTue(){
         let monthObject = {};
-        for(let i = 0; i < NUMBER.monthDate.thirtyOne; i++){
+        for(let i = 1; i < NUMBER.monthDate.thirtyOne; i++){
             let temporaryNumber = i % 7
             if([0,1,2,3,4].includes(temporaryNumber)){
                 monthObject[i] = '평'
@@ -34,7 +34,7 @@ class monthWeekday{
 
     startWed(){
         let monthObject = {};
-        for(let i = 0; i < NUMBER.monthDate.thirtyOne; i++){
+        for(let i = 1; i < NUMBER.monthDate.thirtyOne; i++){
             let temporaryNumber = i % 7
             if([0,1,2,3,6].includes(temporaryNumber)){
                 monthObject[i] = '평'
@@ -48,7 +48,7 @@ class monthWeekday{
 
     startThu(){
         let monthObject = {};
-        for(let i = 0; i < NUMBER.monthDate.thirtyOne; i++){
+        for(let i = 1; i < NUMBER.monthDate.thirtyOne; i++){
             let temporaryNumber = i % 7
             if([0,1,2,5,6].includes(temporaryNumber)){
                 monthObject[i] = '평'
@@ -62,7 +62,7 @@ class monthWeekday{
 
     startFri(){
         let monthObject = {};
-        for(let i = 0; i < NUMBER.monthDate.thirtyOne; i++){
+        for(let i = 1; i < NUMBER.monthDate.thirtyOne; i++){
             let temporaryNumber = i % 7
             if([0,1,4,5,6].includes(temporaryNumber)){
                 monthObject[i] = '평'
@@ -76,7 +76,7 @@ class monthWeekday{
 
     startSat(){
         let monthObject = {};
-        for(let i = 0; i < NUMBER.monthDate.thirtyOne; i++){
+        for(let i = 1; i < NUMBER.monthDate.thirtyOne; i++){
             let temporaryNumber = i % 7
             if([0,3,4,5,6].includes(temporaryNumber)){
                 monthObject[i] = '평'
@@ -90,7 +90,7 @@ class monthWeekday{
 
     startSun(){
         let monthObject = {};
-        for(let i = 0; i < NUMBER.monthDate.thirtyOne; i++){
+        for(let i = 1; i < NUMBER.monthDate.thirtyOne; i++){
             let temporaryNumber = i % 7
             if([2,3,4,5,6].includes(temporaryNumber)){
                 monthObject[i] = '평'
