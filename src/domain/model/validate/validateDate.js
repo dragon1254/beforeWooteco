@@ -1,4 +1,5 @@
 import CONSTANT from "../constant/constant";
+import NUMBER from "../constant/number";
 import ERROR from "../message/error";
 
 class validateDate{
@@ -8,10 +9,10 @@ class validateDate{
         if(isNaN(monthNumber)){
             throw new Error(ERROR.notNumber)
         }
-        if(monthNumber < 1){
+        if(monthNumber < NUMBER.firstMonth){
             throw new ERROR(ERROR.monthRange)
         }
-        if(monthNumber > 12){
+        if(monthNumber > NUMBER.lastMonth){
             throw new ERROR(ERROR.monthRange)
         }
         this.checkDays(day)

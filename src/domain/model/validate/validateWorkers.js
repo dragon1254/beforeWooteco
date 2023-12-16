@@ -1,11 +1,12 @@
+import NUMBER from "../constant/number";
 import ERROR from "../message/error"
 
 class validateWorkers{
     checkWorkers(workers){
-        if(workers.length < 5){
+        if(workers.length < NUMBER.minWorker){
             throw new Error(ERROR.allNumberRange);
         }
-        if(workers.length > 35){
+        if(workers.length > NUMBER.maxWorker){
             throw new Error(ERROR.allNumberRange);
         }
         this.checkContinuous(workers);

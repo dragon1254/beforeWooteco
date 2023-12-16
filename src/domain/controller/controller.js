@@ -1,5 +1,7 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
 import inputView from "../view/inputView";
+import monthWorkers from "../model/utils/monthWorkes";
+import NUMBER from "../model/constant/number";
 
 
 class controller{
@@ -10,6 +12,7 @@ class controller{
     async run(){
         await this.getStartDate();
         await this.getWorkers();
+        this.eachMonthWorkers();
     }
 
     async getStartDate(){
@@ -33,7 +36,17 @@ class controller{
             return await this.getWorkers()
         }
     }
-    
+
+    eachMonthWorkers(){
+        const everyMonthWorkers = new monthWorkers(this.#startDate);
+        const workers = everyMonthWorkers.standardForDays()
+        this.selectWorkersToDay(workers)
+    }
+
+    selectWorkersToDay(){
+
+    }
+
 }
 
 export default controller;
