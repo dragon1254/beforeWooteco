@@ -10,10 +10,10 @@ class validateDate{
             throw new Error(ERROR.notNumber)
         }
         if(monthNumber < NUMBER.firstMonth){
-            throw new ERROR(ERROR.monthRange)
+            throw new Error('[ERROR]')
         }
         if(monthNumber > NUMBER.lastMonth){
-            throw new ERROR(ERROR.monthRange)
+            throw new Error(ERROR.monthRange)
         }
         this.checkDays(day)
     }

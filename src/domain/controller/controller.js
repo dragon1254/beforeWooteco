@@ -3,6 +3,9 @@ import inputView from "../view/inputView";
 import monthWorkers from "../model/utils/monthWorkers";
 import NUMBER from "../model/constant/number";
 import workersToDate from "../model/utils/workesToDate";
+import outputView from "../view/outputView";
+import CONSTANT from "../model/constant/constant";
+import checkDate from "../model/utils/checkDate";
 
 
 class controller{
@@ -15,6 +18,7 @@ class controller{
         await this.getStartDate();
         await this.getWorkers();
         this.eachMonthWorkers();
+        this.printAll();
     }
 
     async getStartDate(){
@@ -52,7 +56,9 @@ class controller{
     }
 
     printAll(){
-        
+        const checkDateNumber = new checkDate(this.#startDate)
+        const dateNumber = checkDateNumber.checkDay()
+        outputView.dateWorkers(dateNumber,this.#startDate,this.#allWorkersToDate)
     }
 }
 
