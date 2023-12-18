@@ -4,9 +4,7 @@ maxWorker : 35,
 firstMonth : 1,
 lastMonth : 12,
 monthDate :{
-    thirtyOne : 3,
-    feb : 28,
-    thirty : 30
+    thirtyOne : 32
 },
 monthNumber : {
     jan : 1,
