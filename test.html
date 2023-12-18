@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test2(day){
+            // let day = "12,월"
+            let weekdaysWorkers = "허브,쥬니,말랑,라온,헤나,우코,에단,수달,파워,히이로,마코,슬링키,모디,연어,깃짱,리오,고니,박스터,달리,조이,노아이즈,도이,도치,홍고,스캇,폴로,해시,로지,첵스,아이크,우가,푸만능,애쉬,로이스,오션";
+            let holidayWorkers = "오션,로이스,애쉬,푸만능,우가,아이크,첵스,로지,해시,폴로,스캇,홍고,도치,도이,노아이즈,조이,달리,박스터,고니,리오,깃짱,연어,모디,슬링키,마코,히이로,파워,수달,에단,우코,헤나,라온,말랑,쥬니,허브";
+            let dateNumber = 0
+            let makeDate = day.split(',')
+            let weekdaysWorkersArray = weekdaysWorkers.split(',')
+            let holidayWorkersArray = holidayWorkers.split(',')
+
+            let monthObject = {};
+    if(makeDate[1]==='월'){
+        dateNumber = 0;
+        for(let i = 1; i < 32; i++){
+            let temporaryNumber = i % 7
+            if([1,2,3,4,5].includes(temporaryNumber)){
+                monthObject[i] = '평'
+            }
+            if([0,6].includes(temporaryNumber)){
+                monthObject[i] = '휴'
+            }
+        }
+    }
+    
+    if(makeDate[1]==='화'){
+        dateNumber = 1;
+        for(let i = 1; i < 32; i++){
+            let temporaryNumber = i % 7
+            if([0,1,2,3,4].includes(temporaryNumber)){
+                monthObject[i] = '평'
+            }
+            if([5,6].includes(temporaryNumber)){
+                monthObject[i] = '휴'
+            }
+        }
+    }
+
+    if(makeDate[1]==='수'){
+        dateNumber = 2;
+        for(let i = 1; i < 32; i++){
+            let temporaryNumber = i % 7
+            if([0,1,2,3,6].includes(temporaryNumber)){
+                monthObject[i] = '평'
+            }
+            if([4,5].includes(temporaryNumber)){
+                monthObject[i] = '휴'
+            }
+        }
+    }
+
+    if(makeDate[1]==='목'){
+        dateNumber = 3;
+        for(let i = 1; i < 32; i++){
+            let temporaryNumber = i % 7
+            if([0,1,2,5,6].includes(temporaryNumber)){
+                monthObject[i] = '평'
+            }
+            if([3,4].includes(temporaryNumber)){
+                monthObject[i] = '휴'
+            }
+        }
+    }
+
+    if(makeDate[1]==='금'){
+        dateNumber = 4;
+        for(let i = 1; i < 32; i++){
+            let temporaryNumber = i % 7
+            if([0,1,4,5,6].includes(temporaryNumber)){
+                monthObject[i] = '평'
+            }
+            if([2,3].includes(temporaryNumber)){
+                monthObject[i] = '휴'
+            }
+        }
+    }
+
+    if(makeDate[1]==='토'){
+        dateNumber = 5;
+        for(let i = 1; i < 32; i++){
+            let temporaryNumber = i % 7
+            if([0,3,4,5,6].includes(temporaryNumber)){
+                monthObject[i] = '평'
+            }
+            if([1,2].includes(temporaryNumber)){
+                monthObject[i] = '휴'
+            }
+        }
+    }
+
+    if(makeDate[1]==='일'){
+        dateNumber = 6;
+        for(let i = 1; i < 32; i++){
+            let temporaryNumber = i % 7
+            if([2,3,4,5,6].includes(temporaryNumber)){
+                monthObject[i] = '평'
+            }
+            if([0,1].includes(temporaryNumber)){
+                monthObject[i] = '휴'
+            }
+        }
+    }
+        if(makeDate[0] === 1){
+            monthObject[1] = '휴';
+        }
+        if(makeDate[0] === 3){
+            monthObject[1] = '휴';
+        }
+        if(makeDate[0] === 5){
+            monthObject[5] = '휴';
+        }
+        if(makeDate[0] === 6){
+            monthObject[6] = '휴';
+        }
+        if(makeDate[0] === 8){
+            monthObject[15] = '휴';
+        }
+        if(makeDate[0] === 10){
+            monthObject[3] = '휴';
+            monthObject[9] = '휴';
+        }
+        if(makeDate[0] === 12){
+            monthObject[25] = '휴';
+        }
+    
+
+
+        const temporaryValues = Object.values(monthObject)
+        const dateWorkers = {}
+        let holidayCount = 0
+        let weekdayCount = 0
+        temporaryValues.forEach((element,index) => {
+            if(element === '휴'){
+                dateWorkers[index+1] = holidayWorkersArray[holidayCount]
+                holidayCount++
+            }
+            if(element === '평'){
+                dateWorkers[index+1] = weekdaysWorkersArray[weekdayCount]
+                weekdayCount++
+            }
+        });
+
+        const allWorkers = Object.values(dateWorkers)
+        for(let i = 0; i < allWorkers.length - 2; i++){
+            if(allWorkers[i] === allWorkers[i+1]){
+                let holidayCount = 0
+        let weekdayCount = 0
+                if(temporaryValues[i+1] === '휴'){
+            holidayWorkersArray[i+1] = holidayWorkersArray[i+2]
+            temporaryValues.forEach((element,index) => {
+            if(element === '휴'){
+                dateWorkers[index+1] = holidayWorkersArray[holidayCount]
+                holidayCount++
+            }
+            if(element === '평'){
+                dateWorkers[index+1] = weekdaysWorkersArray[weekdayCount]
+                weekdayCount++
+            }
+        });
+        }
+        if(temporaryValues[i+1] === '평'){
+            weekdaysWorkersArray[i+1] = weekdaysWorkersArray[i+2]
+            temporaryValues.forEach((element,index) => {
+            if(element === '휴'){
+                dateWorkers[index+1] = holidayWorkersArray[holidayCount]
+                holidayCount++
+            }
+            if(element === '평'){
+                dateWorkers[index+1] = weekdaysWorkersArray[weekdayCount]
+                weekdayCount++
+            }
+        });
+        }
+            }
+        }
+        let workersValue = Object.values(dateWorkers)
+        workersValue.forEach((element,index) => {
+            const dayNumber = (index + dateNumber) % 7
+            console.log(`${makeDate[0]}월 ${index + 1}일 ${['월','화','수','목','금','토','일'][dayNumber]} ${element}`)
+        });
+        console.log(temporaryValues)
+        }
+    </script>
+</body>
+</html>
