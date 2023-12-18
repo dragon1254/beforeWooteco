@@ -54,29 +54,29 @@ class monthWorkers{
     }
     
     exceptionHoliday(){
-        if(this.#month === 1){
+        if(Number(this.#month) === 1){
             this.#workersObject[1] = '휴';
         }
-        if(this.#month === 3){
+        if(Number(this.#month) === 3){
             this.#workersObject[1] = '휴';
         }
-        if(this.#month === 5){
+        if(Number(this.#month) === 5){
             this.#workersObject[5] = '휴';
         }
-        if(this.#month === 6){
+        if(Number(this.#month) === 6){
             this.#workersObject[6] = '휴';
         }
         this.exceptionHolidayFromAug()
     }
     exceptionHolidayFromAug(){
-        if(this.#month === 8){
+        if(Number(this.#month) === 8){
             this.#workersObject[15] = '휴';
         }
-        if(this.#month === 10){
+        if(Number(this.#month) === 10){
             this.#workersObject[3] = '휴';
             this.#workersObject[9] = '휴';
         }
-        if(this.#month === 12){
+        if(Number(this.#month) === 12){
             this.#workersObject[25] = '휴';
         }
     }

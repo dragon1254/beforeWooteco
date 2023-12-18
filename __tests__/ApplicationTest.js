@@ -82,7 +82,8 @@ describe("온콜 테스트", () => {
   });
 });
 
-test("기능 테스트", async () => {
+describe("기능테스트",()=>{
+test("토 시작 기능 테스트", async () => {
   await run({
     inputs: [
       "4,토",
@@ -122,4 +123,49 @@ test("기능 테스트", async () => {
       "4월 30일 일 폴로",
     ],
   });
+});
+
+test("공휴일 포함 월 시작 기능 테스트", async () => {
+  await run({
+    inputs: [
+      "5,월",
+      "허브,쥬니,말랑,라온,헤나,우코,에단,수달,파워,히이로,마코,슬링키,모디,연어,깃짱,리오,고니,박스터,달리,조이,노아이즈,도이,도치,홍고,스캇,폴로,해시,로지,첵스,아이크,우가,푸만능,애쉬,로이스,오션",
+      "오션,로이스,애쉬,푸만능,우가,아이크,첵스,로지,해시,폴로,스캇,홍고,도치,도이,노아이즈,조이,달리,박스터,고니,리오,깃짱,연어,모디,슬링키,마코,히이로,파워,수달,에단,우코,헤나,라온,말랑,쥬니,허브",
+    ],
+    expected: [
+      "5월 1일 월 허브" + LINE_SEPARATOR,
+      "5월 2일 화 쥬니" + LINE_SEPARATOR,
+      "5월 3일 수 말랑" + LINE_SEPARATOR,
+      "5월 4일 목 라온" + LINE_SEPARATOR,
+      "5월 5일 금 오션" + LINE_SEPARATOR,
+      "5월 6일 토 로이스" + LINE_SEPARATOR,
+      "5월 7일 일 애쉬" + LINE_SEPARATOR,
+      "5월 8일 월 헤나" + LINE_SEPARATOR,
+      "5월 9일 화 우코" + LINE_SEPARATOR,
+      "5월 10일 수 에단" + LINE_SEPARATOR,
+      "5월 11일 목 수달" + LINE_SEPARATOR,
+      "5월 12일 금 파워" + LINE_SEPARATOR,
+      "5월 13일 토 푸만능" + LINE_SEPARATOR,
+      "5월 14일 일 우가" + LINE_SEPARATOR,
+      "5월 15일 월 히이로" + LINE_SEPARATOR,
+      "5월 16일 화 마코" + LINE_SEPARATOR,
+      "5월 17일 수 슬링키" + LINE_SEPARATOR,
+      "5월 18일 목 모디" + LINE_SEPARATOR,
+      "5월 19일 금 연어" + LINE_SEPARATOR,
+      "5월 20일 토 아이크" + LINE_SEPARATOR,
+      "5월 21일 일 첵스" + LINE_SEPARATOR,
+      "5월 22일 월 깃짱" + LINE_SEPARATOR,
+      "5월 23일 화 리오" + LINE_SEPARATOR,
+      "5월 24일 수 고니" + LINE_SEPARATOR,
+      "5월 25일 목 박스터" + LINE_SEPARATOR,
+      "5월 26일 금 달리" + LINE_SEPARATOR,
+      "5월 27일 토 로지" + LINE_SEPARATOR,
+      "5월 28일 일 해시" + LINE_SEPARATOR,
+      "5월 29일 월 조이" + LINE_SEPARATOR,
+      "5월 30일 화 노아이즈" + LINE_SEPARATOR,
+      "5월 31일 수 도이"
+    ],
+  });
+});
+
 });
